@@ -1,0 +1,40 @@
+{% macro input(type, name, label, error) %}
+    <div class="form-group {{ _ERROR["#{name}"] ? 'has-error' }}">
+      <label for="{{ name }}">{{ label }}</label>
+      <input class="form-control" id="{{ name }}" name="{{ name }}" placeholder="{{ label }}" type="{{ type|default('text') }}" value="{{ _POST["#{name}"]|e }}">
+
+      {% if _ERROR["#{name}"] %}
+      <span class="help-block text-danger">
+        {{ error|default("#{label} is empty or invalid.") }}
+      </span>
+      {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro gInput(name, value, type, label, error, options) %}
+    <div class="form-group {{ _ERROR["#{name}"] ? 'has-error' }}">
+      <label class="{{ ('sr-only' in options) ? 'sr-only' }}" for="{{ name }}">{{ label }}</label>
+      <input class="form-control" id="{{ name }}" name="{{ name }}" placeholder="{{ label }}" type="{{ type|default('text') }}" value="{{ value|e }}">
+
+      {% if _ERROR["#{name}"] %}
+      <span class="help-block text-danger">
+        {{ error|default("#{label} is empty or invalid.") }}
+      </span>
+      {% endif %}
+    </div>
+{% endmacro %}
+
+
+
+
+{% macro iInput(type, id, name, placeholder) %}
+    <input class="form-control" id="{{ id }}" name="{{ name }}" placeholder="{{ placeholder }}" type="{{ type|default('text') }}" value="{{ _POST["#{name}"]|e }}">
+{% endmacro %}
+
+{% macro iCheckbox(id, name, value) %}
+    <input {{ value in _POST["#{name}"] ? 'checked' }} id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ value }}">
+{% endmacro %}
+
+{% macro iRadio(id, name, value) %}
+    <input {{ value in _POST["#{name}"] ? 'checked' }} id="{{ id }}" name="{{ name }}" type="radio" value="{{ value }}">
+{% endmacro %}

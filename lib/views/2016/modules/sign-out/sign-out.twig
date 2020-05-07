@@ -1,0 +1,26 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}Sign out - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">Sign out</h1>
+
+      <div class="bs-callout bs-callout-info">
+        <h4>You have signed out from your account.</h4>
+        <p>
+          To <a href="/sign-in/">sign in again</a> you will need your user name and password.
+        </p>
+      </div>
+
+      <p class="text-center">
+        <small>
+          <a href="{{ app.url }}">{{ app.domain }}</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

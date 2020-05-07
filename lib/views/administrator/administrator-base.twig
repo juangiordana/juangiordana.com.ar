@@ -1,0 +1,150 @@
+{% extends '/base.twig' %}
+{% import 'administrator/macros/forms.twig' as forms %}
+
+{% block title %}{{ APP_NAME }} Administrator{% endblock %}
+
+{% block head %}
+  {{ parent() }}
+  {% if app.production %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  {% else %}
+  <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+  <link href="/css/font-awesome-4.7.0.min.css" rel="stylesheet">
+  {% endif %}
+  <link rel="stylesheet" href="/css/administrator/styles.css">
+{% endblock %}
+
+{% block body %}
+  <!-- header id="header">
+    {% block header %}
+    <p>
+      <a href="/.admin/"><span>{{ APP_NAME}} Administrator</span></a>
+    </p>
+    {% endblock %}
+  </header -->
+
+  <nav class="navbar navbar-default" role="navigation">
+    {% block nav %}
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/.admin/">
+        <img src="/favicon.ico" width="16" height="16" alt="{{ APP_NAME }}"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/.admin/">Dashboard</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/.admin/blog-post-add/">Add post</a></li>
+              <li><a href="/.admin/blog-post-list/">List posts</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Photos <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/.admin/">Add post</a></li>
+              <li><a href="/.admin/">List posts</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Extras <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/.admin/google-sitemaps/" title="Google Sitemaps">Google Sitemaps</a></li>
+              <li><a href="/.admin/technorati-ping/" title="Technorati Ping">Technorati Ping</a></li>
+              <li><a href="/.admin/php-highlight/" title="PhpInfo">Php Highlight</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">System <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/.admin/settings/">Settings</a></li>
+              <li><a href="/.admin/password/" title="Change Administrator's password">Password</a></li>
+              <li class="divider"></li>
+              <li><a href="{{ PMA_URL }}" title="PhpMyAdmin">PhpMyAdmin</a></li>
+              <li><a href="/.admin/php-info/" title="PhpInfo">PhpInfo</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <form action="/.admin/search/" class="navbar-form navbar-left" method="post" role="search">
+          <div class="form-group">
+            <input id="user" name="user" type="text" class="form-control" placeholder="#ID or e-mail">
+            <input type="hidden" name="search[user]" value="1" />
+          </div>
+          <button type="submit" class="btn btn-default sr-only">Go</button>
+        </form>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#">Link</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Dropdown
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="#">Action</a>
+              </li>
+              <li>
+                <a href="#">Another action</a>
+              </li>
+              <li>
+                <a href="#">Something else here</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">Separated link</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/.admin/logout/">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endblock %}
+  </nav>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer id="footer">
+    <p class="text-right">
+      Copyright {{ 'now'|date('Y') }} <a href="//{{ APP_DOMAIN }}/" title="{{ APP_TITLE }}">{{ APP_NAME }}</a>.
+    </p>
+  </footer>
+{% endblock %}
+
+{% block script %}
+  {{ parent() }}
+  {% if app.production %}
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  {% endif %}
+  <script>window.jQuery || document.write('<script src="/js/jquery-3.1.0.min.js"><\/script>')</script>
+
+  {% if app.production %}
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  {% else %}
+  <script src="/js/bootstrap-3.3.7.min.js"></script>
+  {% endif %}
+
+  <script src="/js/administrator/main.js{{ CSS_CACHE_BUSTER }}"></script>
+{% endblock %}

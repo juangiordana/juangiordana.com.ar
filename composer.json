@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "lib/App/"
+        }
+    },
+    "require": {
+        "php": "~5.6",
+        "pear/pager": "^2.5",
+        "swiftmailer/swiftmailer": "^5.4",
+        "twig/twig": "^1.42",
+        "vlucas/phpdotenv": "^4.1"
+    }
+}

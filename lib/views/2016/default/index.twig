@@ -1,0 +1,101 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}{{ app.name }}{% endblock %}
+
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="Argentinian web developer - Juan Giordana">
+  <meta name="google-site-verification" content="GHMUjEHsEcglPZjoknzKgD-XVcCXRJBBzYN9MvxZ-O4">
+{% endblock %}
+
+{% block header %}
+<div class="container">
+  <div class="page-header">
+    <h1>
+      <a href="/">Juan Giordana</a>
+    </h1>
+    <p class="lead">
+      Argentinian web developer and technology problem solver.
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9" lang="en">
+      <section>
+        <p>
+          Hello, I'm Juan Giordana, a full-stack developer and technologist from
+          <a href="https://goo.gl/maps/A5oQrqbi8b32">Santa Fe, Argentina</a>.
+          Since 2004 I've been building web applications, systems and analyzing
+          data in the Music, Photography, Heavy Equipment and Transportation
+          industries. I'm always exploring new technologies, platforms and
+          services to develop innovative products.
+        </p>
+
+        <h2>Ways to get in touch</h2>
+        <p>
+          If you want to contact me you can send me an e-mail to
+          <a href="{{ app.email_encoded_uri|raw }}">{{ app.email_encoded|raw }}</a>
+          or use the <a href="/contact/">contact form</a> on this site,
+          which is the same. You can also check my <a href="/blog/">blog</a>,
+          though I haven't dedicated much time to it lately.
+        </p>
+
+        <h2>Skills:</h2>
+        <p>
+          I have have experience with both back-end and front-end programming,
+          systems administration and I'm skilled to build a complete dynamic
+          website from the ground up using Linux, Nginx, PHP, MySQL, HTML, CSS
+          and JavaScript.
+        </p>
+
+        <ul>
+          <li>Full-stack web application development on LAMP/LEMP systems.</li>
+          <li>Rich, dynamic front-end JavaScript development with and without frameworks.</li>
+          <li>Web Services development and integration with RESTful APIs.</li>
+          <li>Linux and Cloud platforms server administration.</li>
+          <li>Web Application debugging and performance monitoring.</li>
+          <li>Mass mailing.</li>
+          <li>Database development with MySQL.</li>
+          <li>Experience with mobile and responsive web applications.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            <a href="//www.bandmix.com">BandMix</a>
+            <br>
+            BandMix is a service that connects musicians and bands together.
+            <br><br>
+          </li>
+          <li>
+            <a href="//www.vialfe.com.ar">VialFe</a>
+            <br>
+            VialFe is an Argentinian company dedicated to the  Heavy Equipment trading
+            and rent.
+            <br><br>
+          </li>
+        </ul>
+        <p>
+          You can have a more detailed view of my work in my online <a href="/resume/">resumé</a>.
+        </p>
+      </section>
+    </div>
+    <div class="col-sm-3">
+      <div class="g-person" data-href="//plus.google.com/u/0/117766208960754000890" data-rel="author"></div>
+      <div class="github-card" data-user="juangiordana" data-theme="default"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+  {{ parent() }}
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://lab.lepture.com/github-cards/widget.js"></script>
+{% endblock %}

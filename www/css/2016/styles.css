@@ -1,0 +1,177 @@
+/*******************************************************************************
+ * Base.
+ */
+body {
+    color: #1e1e1e;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    color: #a00;
+}
+
+h2 {
+    color: #C90014;
+}
+
+h3 {
+    color: #000;
+}
+
+h4 {
+    color: #000;
+}
+
+h2 {
+    color: #C90014;
+}
+
+a:active {
+    color: #a00;
+}
+
+a:link {
+    color: #005B72;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a00;
+}
+
+a:visited {
+    color: #780093;
+}
+
+::selection {
+    background: #a0a000;
+    text-shadow: none;
+}
+
+/*******************************************************************************
+ * Layout.
+ */
+#wrapper {
+    margin-bottom: 10em;
+}
+
+#header h1 > a:link,
+#header h1 > a:visited {
+    color: #5D1487;
+}
+
+/*******************************************************************************
+ * Bootstrap callout.
+ */
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+
+/*******************************************************************************
+ * Bootstrap required fields.
+ */
+.form-group.required .control-label:before {
+    content: '* ';
+    color: #a00;
+    font-weight: bold;
+}
+
+/*******************************************************************************
+ * Classes.
+ */
+svg.logo {
+    height: 20px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+svg.logo .outer-ring {
+    fill: #222;
+}
+
+svg.logo .middle-ring {
+    fill: #fff;
+}
+
+svg.logo .center-ring {
+    fill: #c00;
+}
+
+svg.logo .shine {
+    fill: #222;
+    opacity: 0.1;
+}
+
+.post hgroup {
+    color: #999;
+}
+
+/*******************************************************************************
+ * Media Queries.
+ *
+@media screen and (max-width: 600px) {}
+@media screen and (min-width: 900px) {}
+@media screen and (min-width: 600px) and (max-width: 900px) {}
+@media screen and (max-device-width: 480px) {}
+ */
+
+@media print {
+    #header,
+    #navbar,
+    #footer {
+        display: none;
+    }
+}

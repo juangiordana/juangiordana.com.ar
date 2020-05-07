@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{SUBJECT}</title>
+<style>
+/* Reset styles. */
+body, #bodyTable, #bodyCell { height: 100% !important; margin: 0; padding: 0; width: 100% !important; }
+table { border-collapse: collapse; }
+img, a img { border: 0; outline: none; text-decoration: none; }
+h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
+p { margin: 1em 0; }
+
+/* Client-specific styles. */
+.ReadMsgBody { width: 100%; }
+.ExternalClass { width: 100%; }
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+#outlook a { padding: 0; }
+img { -ms-interpolation-mode: bicubic; }
+body, table, td, p, a, li, blockquote { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+
+/* General styles. */
+body, #bodyTable { background-color: #F5F5F5; }
+#bodyCell { border-top: 4px solid #BF0411; padding: 20px; }
+#templateContainer { width: 600px; }
+h1, h2, h3, h4, h5, h6 { display: block; font-family: Helvetica; font-style: normal; font-weight: bold; line-height: 100%; letter-spacing: normal; text-align: left; }
+h3, h4, h5, h6 { font-style: italic; font-weight: normal; }
+h1 { color: #BF0411 !important; font-size: 20px; }
+h2 { color: #404040 !important; font-size: 20px; }
+h3 { color: #606060 !important; font-size: 16px; }
+h4 { color: #808080 !important; font-size: 14px; }
+
+/* E-mail header. */
+#templateHeader { margin-bottom: 20px; }
+.headerContent { }
+.headerContent a:link, .headerContent a:visited { font-weight: normal; text-decoration: underline; }
+#headerImage { height: auto; max-width: 600px; }
+
+/* E-mail body. */
+#templateBody { background-color: #FFFFFF; border: 1px solid #BBBBBB; }
+.bodyContent { color: #505050; font-family: Helvetica; font-size: 14px; line-height: 150%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; text-align: left; }
+.bodyContent a:link, .bodyContent a:visited { color: #031C32; font-weight: normal; text-decoration: underline; }
+.bodyContent img { display: inline; height: auto; max-width: 560px; }
+
+/* E-mail footer. */
+#templateFooter { margin-top: 20px; }
+.footerContent { color: #808080; font-family: Helvetica; font-size: 10px; line-height: 150%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; text-align: center; }
+.footerContent a:link, .footerContent a:visited, .footerContent a span { color: #606060; font-weight: normal; text-decoration: underline; }
+
+/* Yahoo! Mail Overrides */
+.headerContent a .yshortcuts,
+.bodyContent a .yshortcuts,
+.footerContent a .yshortcuts { color: #031C32; font-weight: normal; text-decoration: underline; }
+
+/* Mobile styles. */
+@media only screen and (max-width: 480px){
+  /* Client-specific mobile styles. */
+  body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: none !important; }
+  body { width: 100% !important; min-width: 100% !important; }
+
+  /* Mobile reset styles. */
+  #bodyCell { padding: 10px !important; }
+
+  /* General styles. */
+  #templateContainer { max-width: 600px !important; width: 100% !important; }
+  h1 { font-size: 24px !important; line-height: 100% !important; }
+  h2 { font-size: 20px !important; line-height: 100% !important; }
+  h3 { font-size: 18px !important; line-height: 100% !important; }
+  h4 { font-size: 16px !important; line-height: 100% !important; }
+
+  /* E-mail header. */
+  #headerImage { height: auto !important; max-width: 600px !important; width: 100% !important; }
+  .headerContent { }
+
+  /* E-mail body. */
+  .bodyContent { font-size: 18px !important; line-height: 125% !important; }
+
+  /* E-mail footer. */
+  .footerContent { font-size: 14px !important; line-height: 115% !important; }
+  .footerContent a { display: block !important; }
+}
+</style>
+</head>
+<body>
+<center>
+  <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+    <tr>
+      <td align="center" valign="top" id="bodyCell">
+
+        <table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
+          <tr>
+            <td align="center" valign="top">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
+                <tr>
+                  <td valign="top" class="headerContent">
+                    <a href="{APP_URL}" title="{APP_NAME}"><img alt="{APP_NAME}" id="headerImage" src="{APP_URL}img/emails/02/isologotipo.png" width="415" height="120" style="max-width:600px;"></a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" valign="top">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
+                <tr>
+                  <td valign="top" class="bodyContent">
+                    <h1>{SUBJECT}</h1>
+                    {CONTENT}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" valign="top">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter">
+                <tr>
+                  <td valign="top" class="footerContent">
+                    <a href="{APP_URL}" title="{APP_NAME}"><img alt="{APP_NAME}" src="{APP_URL}img/emails/02/isotipo.png" width="120" height="120"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top" class="footerContent" style="padding-top:0;">
+                    <em>Copyright &copy; {DATE_Y} {APP_NAME}</em>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</center>
+</body>
+</html>

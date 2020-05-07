@@ -1,0 +1,30 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}Mapa del sitio{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Mapa del sitio</h1>
+  <ul>
+    <li><a href="/">Principal</a></li>
+    <li><a href="/about/">Acerca</a></li>
+    <li>
+      <a href="/blog/">Blog</a>
+      <ul>
+        <li><a href="/blog/authors/">Autores</a></li>
+        <li><a href="/blog/categories/">Categorías</a></li>
+        <li><a href="/blog/feeds/atom/">Atom feeds</a></li>
+        <li><a href="/blog/feeds/rss/">RSS feeds</a></li>
+      </ul>
+    </li>
+    <li><a href="/contact/">Contacto</a></li>
+    <li>
+      <a href="/cv/">Curriculum vitae</a>
+      /
+      <a href="/resume/">Résumé</a>
+    </li>
+    <li><a href="/links/">Enlaces</a></li>
+  </ul>
+  <hr>
+</div>
+{% endblock %}

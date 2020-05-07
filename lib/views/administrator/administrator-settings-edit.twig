@@ -1,0 +1,38 @@
+{% extends 'administrator/administrator-base.twig' %}
+
+{% block title %}Dashboard - {{ APP_NAME }} Administrator{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>System Settings</h2>
+      <p>
+        <strong>Warning:</strong>
+        Setting incorrect parameters <strong>will</strong> make the system unusable.
+      </p>
+      <hr>
+
+      {% if settings %}
+      <form method="post">
+        {% for setting in settings %}
+        <h4><code>{{ setting.name }}</code></h4>
+        {{ forms.input('', "setting_name_#{loop.index0}", 'Setting name', 'Error - setting name') }}
+        {{ forms.input('', "setting_type_#{loop.index0}", 'Setting type', 'Error - setting type') }}
+        {{ forms.input('', "setting_value_#{loop.index0}", 'Setting value', 'Error - setting value') }}
+        {{ forms.input('', "setting_title_#{loop.index0}", 'Setting title', 'Error - setting title') }}
+        {{ forms.input('', "setting_description_#{loop.index0}", 'Setting description', 'Error - setting description') }}
+        <hr>
+        {% endfor %}
+
+        <p>
+          <button class="btn btn-default" type="submit">Save Settings</button>
+        </p>
+      </form>
+      {% else %}
+      <p>There are no settings to list.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}Acerca de {{ app.domain }}{% endblock %}
+
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="Acerca de Acerca de {{ app.domain }}." />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <h1>Acerca de este sitio.</h1>
+      <p>
+        Mi nombre es <a href="/">Juan Francisco Giordana</a>, soy
+        <a href="/cv/">desarrollador web</a> y vivo en la ciudad de
+        <a href="https://goo.gl/maps/s7PyBzPh7wG2">Esperanza</a>, Santa Fe,
+        Argentina.
+      </p>
+      <p>
+        Este es mi sitio web personal al que generalmente utilizo como banco de
+        pruebas para entretenerme aplicando los conocimientos de las nuevas
+        tecnologías que voy descubriendo.
+      </p>
+      <p>
+        Se pueden ver más detalles de los trabajos que he realizado accediendo
+        a mi <a href="/cv/">curriculum vitae</a> /
+        <a href="/resume/" lang="en">resumé</a>.
+      </p>
+    </div>
+    <div class="col-sm-3">
+      <div class="g-person" data-href="//plus.google.com/u/0/117766208960754000890" data-rel="author"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+  {{ parent() }}
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}

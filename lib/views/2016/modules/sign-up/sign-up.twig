@@ -1,0 +1,120 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}Sign up - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1 class="text-center">Sign up</h1>
+
+      <div class="bs-callout bs-callout-primary {{ _ERROR ? 'hidden' }}">
+        <h4>Create your {{ app.name }} account.</h4>
+        <p>Complete this form to create your account on {{ app.name }}.</p>
+      </div>
+
+      {% include '@2016/common/form-generic-message-error.twig' %}
+
+      <form method="post" {{ app.production ?: 'novalidate' }} role="form">
+        <fieldset>
+          <legend>Personal information</legend>
+
+          <div class="form-group required {{ _ERROR.first_name ? 'has-error' }}">
+            <label class="control-label" for="first_name">First name</label>
+            <input autofocus="on" class="form-control" id="first_name" name="first_name" placeholder="First" required type="text" value="{{ _POST.first_name }}">
+            <span class="help-block {{ not _ERROR.first_name ? 'hidden' }}">
+              <strong>First name</strong> is empty or incorrect.
+            </span>
+          </div>
+
+          <div class="form-group required {{ _ERROR.last_name ? 'has-error' }}">
+            <label class="control-label" for="last_name">Last name</label>
+            <input class="form-control" id="last_name" name="last_name" placeholder="Last" required type="text" value="{{ _POST.last_name }}">
+            <span class="help-block {{ not _ERROR.last_name ? 'hidden' }}">
+              <strong>Last name</strong> is empty or incorrect.
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Credentials</legend>
+          <div class="form-group required {{ _ERROR.username ? 'has-error' }}">
+            <label class="control-label" for="username">User name</label>
+            <input class="form-control" id="username" name="username" placeholder="User name" required type="text" value="{{ _POST.username }}">
+            <span class="help-block {{ not _ERROR.username ? 'hidden' }}">
+              <strong>User name</strong> is empty or incorrect.
+            </span>
+            <span class="help-block {{ not _ERROR.username_invalid ? 'hidden' }}">
+              <strong>User name</strong> is incorrect.
+              Please, use only alphanumeric characters (a-z 0-9 -_.) for your user name.
+            </span>
+          </div>
+
+          <div class="form-group required {{ _ERROR.password ? 'has-error' }}">
+            <label class="control-label" for="password">Create a password</label>
+            <input class="form-control" id="password" name="password" placeholder="Password" required type="password">
+            <span class="help-block {{ not _ERROR.password ? 'hidden' }}">
+              <strong>Password</strong> is empty or incorrect.
+            </span>
+          </div>
+
+          <div class="form-group required {{ _ERROR.password_confirmation ? 'has-error' }}">
+            <label class="control-label" for="password_confirmation">Confirm your password</label>
+            <input class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" required type="password">
+            <span class="help-block {{ not _ERROR.password_confirmation ? 'hidden' }}">
+              <strong>Password confirmation</strong> is empty or passwords does not match.
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Contact information</legend>
+          <div class="form-group required {{ _ERROR.email ? 'has-error' }}">
+            <label class="control-label" for="email">E-mail</label>
+            <input class="form-control" id="email" name="email" placeholder="E-mail" required type="email" value="{{ _POST.email }}">
+            <span class="help-block {{ not _ERROR.email ? 'hidden' }}">
+              <strong>E-mail</strong> is empty or incorrect.
+            </span>
+          </div>
+
+          <div class="form-group {{ _ERROR.phone ? 'has-error' }}">
+            <label class="control-label" for="phone">Mobile phone</label>
+            <input class="form-control" id="phone" name="phone" required type="tel" value="{{ _POST.phone }}">
+            <span class="help-block {{ not _ERROR.phone ? 'hidden' }}">
+              <strong>Phone number</strong> is empty or incorrect.
+            </span>
+          </div>
+        </fieldset>
+
+        <p class="text-center">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
+        </p>
+      </form>
+
+      <p class="text-center">
+        <small>
+          <a href="{{ app.url }}">{{ app.domain }}</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ parent() }}
+<script>
+$(document).ready(function() {
+  function fullNameToUsername(str) {
+    return str.toLowerCase()
+    .split(/(\s).+\s/)
+    .join('')
+    .replace(/[^0-9a-z_\-\.]/gi, '');
+  }
+
+  $('#first_name, #last_name').on('keyup', function() {
+    $('#username').val(fullNameToUsername($('#first_name').val() + ' ' + $('#last_name').val()));
+  });
+});
+</script>
+{% endblock %}

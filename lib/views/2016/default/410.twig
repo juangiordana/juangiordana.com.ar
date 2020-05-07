@@ -1,0 +1,27 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}410 - Recurso ya no disponible - {{ app.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="title">410 - Recurso ya no disponible.</h1>
+  <h2>La página solicitada ya no se encuentra disponible.</h2>
+  <p>
+    Puede que haya seguido un enlace roto o la (<abbr title="Uniform Resource Locator">URL</abbr>)
+    tenga algún error de tipeo. Si lo desea puede probar uno de los siguientes enlaces:
+  </p>
+  <ul>
+    <li><a href="//{{ app.domain }}/">Principal</a></li>
+    <li><a href="//{{ app.domain }}/contact/">Contacto</a></li>
+  </ul>
+  <p>
+    Si Usted ha seguido un enlace de una página externa, por favor, contáctese
+    con el autor de dicha página, de otra manera, por favor,
+    <a href="//{{ app.domain }}/contact/">comuníquese con nosotros</a>
+    y veremos que ha ido mal.
+  </p>
+  <p>
+    Muchas gracias.
+  </p>
+</div>
+{% endblock %}

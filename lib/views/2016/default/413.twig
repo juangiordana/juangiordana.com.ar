@@ -1,0 +1,19 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}413 - Request entity too large - {{ app.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>413 - Request entity too large.</h1>
+  <p>
+    Nuestro sistema a determinado que los datos enviados por su navegador
+    sobrepasan el límite permitido (está enviando demasiados bytes).
+  </p>
+  <p>
+    Esto ocurre cuando los limites de tamaño de archivo son excedidos. Por
+    ejemplo, cuando sube una archivo demasiado grande, un error 413 puede
+    ser retornado cuando el servidor web ve que el archivo es demasiado
+    grande.
+  </p>
+</div>
+{% endblock %}

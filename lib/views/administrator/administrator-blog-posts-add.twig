@@ -1,0 +1,171 @@
+{% extends 'administrator/administrator-base.twig' %}
+
+{% block title %}Add post - {{ APP_NAME }} Administrator{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>{{ post.id ? 'Edit post.' : 'Add post.' }}</h2>
+
+      {% if _GET.ok %}
+      <div class="bs-callout bs-callout-success">
+        <h4>Article sucessfully updated.</h4>
+        <p>
+          The article has been sucessfully updated.
+        </p>
+      </div>
+      {% endif %}
+
+      {% if _ERROR %}
+      {% include 'administrator/common/form-error-banner.twig' %}
+      {% endif %}
+    </div>
+  </div>
+
+  <form method="post" role="form">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="form-group {{ _ERROR.title ? 'has-error' }}">
+          <label class="sr-only" for="title">Title</label>
+          <input class="form-control" id="title" name="r[title]" placeholder="Title" type="text" value="{{ _POST.r.title }}">
+          {% if _ERROR.title %}
+          <span class="help-block text-danger">Title is empty or invalid.</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group {{ _ERROR.uri ? 'has-error' }}">
+          <label class="sr-only" for="uri">URI</label>
+          <input class="form-control" id="uri" name="r[uri]" placeholder="URI" type="text" value="{{ _POST.r.uri }}">
+
+          {% if post.id %}
+          <p class="help-block">
+            <a href="{{ post.url }}"><span class="glyphicon glyphicon-link"></span></a>
+            {{ post.url }}
+          </p>
+          {% endif %}
+
+          {% if _ERROR.uri %}
+          <span class="help-block text-danger">URI is empty or invalid.</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group {{ _ERROR.contents ? 'has-error' }}">
+          <label class="sr-only" for="contents">Contents</label>
+          <textarea class="form-control" id="contents" name="r[contents]" placeholder="Post contents" rows="20">{{ _POST.r.contents }}</textarea>
+          {% if _ERROR.contents %}
+          <span class="help-block text-danger">Content empty or invalid.</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group {{ _ERROR.category ? 'has-error' }}">
+          <h4>
+            <label for="category">Category</label>
+          </h4>
+          <select class="form-control" id="category" name="r[category]" size="10">
+          {% for category in categories %}
+            <option value="{{ category.id }}" {{ category.id == _POST.r.category ? 'selected' }}>{{ category.name }}</option>
+          {% endfor %}
+          </select>
+          {% if _ERROR.category %}
+          <span class="help-block text-danger">Please, select a category.</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <h4>Settings</h4>
+          <div class="checkbox">
+            <label>
+              <input {{ _POST.o.html ? 'checked' }} name="o[html]" type="checkbox" value="1">
+              Contents in HTML.
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input {{ _POST.o.display ? 'checked' }} name="o[display]" type="checkbox" value="1">
+              Display.
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input {{ _POST.o.featured ? 'checked' }} name="o[featured]" type="checkbox" value="1">
+              Featured.
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input {{ _POST.o.denycomments ? 'checked' }} name="o[denycomments]" type="checkbox" value="1">
+              Deny comments.
+            </label>
+          </div>
+          {% if post.id %}
+          <div class="checkbox">
+            <label>
+              <input {{ _POST.o.modificationdate ? 'checked' }} name="o[modificationdate]" type="checkbox" value="1">
+              Save modification date
+            </label>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        {% if post.id %}
+        <input name="id" type="hidden" value="{{ post.id }}">
+        {% endif %}
+        <button class="btn btn-default" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <hr>
+
+  {% if comments %}
+  <h4>Comments</h4>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Submited</th>
+        <th>Name</th>
+        <th>Comment</th>
+        <th>Display</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+    {% for comment in comments %}
+      <tr>
+        <td>{{ comment.id }}</td>
+        <td>{{ comment.submitiondate|date('Y-m-d') }}</td>
+        <td class="text-left">{{ comment.fullname }}</td>
+        <td class="text-left">{{ comment.excerpt }}</td>
+        <td>
+          {% if comment.display %}
+            <span class="glyphicon glyphicon-ok"></span>
+          {% else %}
+            <span class="glyphicon glyphicon-remove"></span>
+          {% endif %}
+        </td>
+        <td>
+          <a href="/.admin/blog-post-edit/?id={{ comment.id }}">
+            <span class="glyphicon glyphicon-edit"></span>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>
+    No comments for this post.
+  </p>
+  {% endif %}
+
+  <iframe height="700" src="{{ post.url }}" width="100%"></iframe>
+</div>
+{% endblock %}

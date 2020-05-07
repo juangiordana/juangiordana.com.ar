@@ -1,0 +1,33 @@
+.env
+
+# SSL related files.
+/etc/ssl
+
+/lib/3rdparty
+/src
+
+# Runtime and variable data files.
+/var/lock
+/var/log
+/var/run
+
+# Composer packages.
+/vendor
+
+# Media.
+/www/img/posts
+/www/media
+
+# Auto-generated HTML files.
+/www/403.html
+/www/404.html
+/www/410.html
+/www/413.html
+/www/503.html
+/www/50x.html
+/www/index.html
+
+# Google sitemap_gen output.
+/www/sitemap*.xml.gz
+/www/sitemap_index.xml
+

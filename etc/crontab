@@ -1,0 +1,3 @@
+MAILTO=juangiordana@gmail.com
+
+00 00 * * *         /srv/www/juangiordana.com.ar/bin/generate-sitemap.sh

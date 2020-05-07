@@ -1,0 +1,259 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}Resumé{% endblock %}
+
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="Resumé of Juan Francisco Giordana." />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>Resumé</h1>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <p>Last modified: September, 2017.</p>
+          <p>
+            <a href="https://docs.google.com/document/d/1rDkMYxj-nVWY6i4FnKLzWY_b77ZJDtIh0468smJziDU/edit?usp=sharing">Also available in Google Docs</a>
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <ul class="list-inline">
+            <li><a href="/cv/" title="Español"><img alt="Español" height="11" src="/img/flags/es.png" width="16" /></a></li>
+            <li><a href="/resume/" title="English"><img alt="English" height="11" src="/img/flags/gb.png" width="16" /></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Personal information:</h2>
+          <ul>
+            <li><strong>First name:</strong> Juan Francisco</li>
+            <li><strong>Last name:</strong> Giordana</li>
+            <li><strong>Nationality:</strong> Argentine</li>
+            <li><strong>Marital status:</strong> Single</li>
+            <li><strong>Age:</strong> {{ age }} years old</li>
+            <li><strong>E-mail:</strong> <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#106;&#117;&#097;&#110;&#103;&#105;&#111;&#114;&#100;&#097;&#110;&#097;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#106;&#117;&#097;&#110;&#103;&#105;&#111;&#114;&#100;&#097;&#110;&#097;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a></li>
+            <li><strong>Mobile:</strong> +54 (342) 5211 004</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <h2>Some of my projects:</h2>
+          <ul>
+            <li>
+              <a href="http://www.giordana.com.ar/">
+                www.giordana.com.ar
+              </a>
+            </li>
+            <li>
+              <a href="http://www.bandmix.com/" title="Musicians wanted classifieds at www.bandmix.com">
+                www.bandmix.com
+              </a>
+            </li>
+            <li>
+              <a href="http://www.reelmix.com/" title="Filmmakers wanted classifieds at www.reelmix.com">
+                www.reelmix.com
+              </a>
+            </li>
+            <li>
+              <a href="http://www.vialfe.com.ar/" title="VialFe, una empresa dedicada a la comercialización y el alquiler de maquinaria vial e industrial">
+                www.vialfe.com.ar
+              </a>
+            </li>
+            <li>
+              <a href="http://www.paracaidismosantafe.com.ar/" title="Paracaidismo Santa Fe">
+                www.paracaidismosantafe.com.ar
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <section>
+        <h2>Occupation:</h2>
+
+        <h3>Web Development:</h3>
+        <p>
+          Since early 2004 I am doing <strong>web application development</strong>.
+        </p>
+
+        <h4>Programming:</h4>
+        <p>
+          I mainly use <a href="http://www.php.net/">PHP</a> as <em>programming language</em>, combined it with the
+          functionality provided by the <a href="http://www.mysql.com/">MySQL</a> <em>database</em> engine and rigorous
+          controls in regards to information <em>security</em>, efficiency and effectiveness.
+        </p>
+
+        <p>Featured works:</p>
+        <dl>
+          <dt>Content Management Systems (<abbr title="Content Management Systems">CMS</abbr>):</dt>
+          <dd>News portals (weblogs), online classifieds, photo galleries, etc...</dd>
+          <dt>E-commerce:</dt>
+          <dd>
+            I have developed custom applications including
+            <em>recurring billing systems</em>,
+            <em>encrypted storage for credit card's information</em>,
+            <em>rebate schemes for promotions, coupons or tickets</em>, etc.
+          </dd>
+          <dt>Messaging:</dt>
+          <dd>Internal messaging systems.</dd>
+          <dd>Sending of <em>bulk e-mail</em> (excepting SPAM).</dd>
+          <dd>Integration of discussion forums to existing login systems.</dd>
+          <dt>Searches:</dt>
+          <dd>Simple and advanced search systems (eg. search by geographic proximity).</dd>
+          <dt><abbr title="Really Simple Syndication">RSS</abbr></dt>
+          <dd>Content generation systems.</dd>
+          <dt><abbr title="Application programming interface">API:</abbr></dt>
+          <dd>Creation of <abbr title="Application programming interfaces">APIs</abbr> to interconnect data between different applications/websites.</dd>
+        </dl>
+
+        <p>Technologies that I have used or implemented:</p>
+        <ul>
+          <li><a href="http://www.authorize.net/">Authorize.Net</a>: gateway for online payments with credit cards.</li>
+          <li><a href="http://aws.amazon.com/s3" title="Amazon Simple Storage Service">Amazon S3</a>: High availability remote storage service.</li>
+          <li><a href="http://www.gnupg.org/">GnuPG</a>: encryption information.</li>
+          <li><a href="http://www.google.com/webmasters/sitemaps/login">Google Sitemaps</a>: tool for analysis and troubleshooting websites.</li>
+          <li><a href="http://httpd.apache.org/docs/2.0/mod/mod_rewrite.html">Apache mod_rewrite</a>: generate friendly URLs.</li>
+          <li><a href="http://www.maxmind.com/app/geoip_country">MaxMind GeoIP/GeoLite Country</a>: Determine an Internet visitor's country based on their IP address.</li>
+          <li><a href="http://www.swiftmailer.org/">Swift</a>: a component-based library for sending e-mails from PHP applications.</li>
+          <li><a href="http://twig.sensiolabs.org/">Twig</a>: a flexible, fast, and secure template engine for PHP.</li>
+        </ul>
+
+        <h4>Search Engine Optimization (<abbr title="Search Engine Optimization">SEO</abbr>):</h4>
+        <p>
+          My experience in <em>search engine optimization</em> is based from the use of <em>regular expressions</em> to generate friendly
+          <abbr title="Uniform Resource Locator">URLs</abbr> to the implementation and complete restructuring of HTML documents that conform
+          a website, thereby generating better rankings for the most popular search engines (
+          <a href="http://www.google.com/">Google</a>,
+          <a href="http://www.yahoo.com/">Yahoo!</a>,
+          <a href="http://www.bing.com/">Bing</a>,
+          etc.).
+        </p>
+
+        <h4>CSS &amp; Web Layout:</h4>
+        <p>
+          The latest works I have done are based on the specifications
+          <a href="http://www.w3.org/MarkUp/">HTML</a> and
+          <a href="http://www.w3.org/Style/CSS/">CSS</a> published by the
+          <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a>.
+        </p>
+        <p>
+          The nature of my profession is strictly related to the area of visual communication design
+          <a href="#note-1"><sup>1</sup></a> thereby I have solid knowledge of the aforementioned
+          specifications that allows me to layout websites in line with current standards, generating
+          this way documents with a very high percentage in terms of accessibility, usability and navigability.
+        </p>
+        <p>
+          I also have knowledge to develop web interfaces using JavaScript and the JavaScript library <a href="http://jquery.com/">JQuery</a>.
+        </p>
+
+        <h3>Sysadmin (system administrator):</h3>
+        <ul>
+          <li>
+            Setup, configuration and maintenance of <a href="http://www.linux.org/">Linux</a> and *nix systems in general.
+          </li>
+          <li>
+            Excellent performance in all types of Linux distributions:
+            <a href="http://www.gentoo.org/">Gentoo</a> /
+            <a href="http://www.gentoo.org/">Funtoo</a>,
+            <a href="http://www.debian.org/">Debian</a> /
+            <a href="http://www.ubuntu.com/">Ubuntu</a>,
+            <a href="http://www.redhat.com/">Red Hat</a> /
+            <a href="http://fedora.redhat.com/">Fedora</a> /
+            <a href="http://www.centos.org/">CentOS</a>,
+            <a href="http://www.linuxfromscratch.org/">LFS</a>.
+          </li>
+          <li>
+            Setup and maintenance and optimization of server's software:
+            <ul>
+              <li>
+                Web:
+                <a href="http://www.nginx.net/">Nginx</a>,
+                <a href="http://httpd.apache.org/">Apache</a>.
+              </li>
+              <li>
+                Databases:
+                <a href="http://www.mysql.com/">MySQL</a>.
+              </li>
+              <li>
+                <a href="http://www.php.net/">PHP</a>:
+                as an Apache module and FastCGI.
+              </li>
+              <li>
+                Files:
+                <a href="http://www.samba.org/">SAMBA</a>,
+                <a href="http://nfs.sourceforge.net/">NFS</a>.
+              </li>
+              <li>
+                <abbr title="Domain Name System">DNS</abbr>:
+                <a href="http://cr.yp.to/djbdns.html">djbdns</a>.
+              </li>
+              <li>
+                SSH:
+                <a href="http://www.openssh.com/">OpenSSH</a>.
+              </li>
+              <li>
+                E-mail:
+                <a href="http://www.qmail.org/">Qmail</a>,
+                <a href="http://www.postfix.org/">Postfix</a>,
+                <a href="http://www.exim.org/">Exim</a>.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Compiling applications from source code according to specific needs.
+          </li>
+          <li>
+            Development of local and remote high availability backup systems (hourly backups, daily, etc.).
+          </li>
+          <li>
+            Processes automation under *nix systems.
+          </li>
+        </ul>
+
+        <h3>Other:</h3>
+        <ul>
+          <li>Technical service in both hardware and software areas.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Education:</h2>
+        <ul>
+          <li>Full attended primary and secondary (high school) levels.</li>
+          <li>PC armed, repair and maintenance: title awarded by the <a href="http://cisco.netacad.net">CISCO Academy</a>.</li>
+          <li>Structured Cabling and LAN networks: completed the first semester of the CCNA at the <a href="http://cisco.netacad.net">CISCO Academy</a>.</li>
+          <li>Very good level of written English.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Trajectory:</h2>
+        <dl>
+          <dt>2004 - 2005:</dt>
+          <dd>I took my first steps as web developer <a href="http://www.nkstudios.net/">NKStudios S.R.L.</a></dd>
+          <dt>2005 - 2006:</dt>
+          <dd>I worked as a <em>freelance web developer</em> for different local companies (<a href="http://www.nkstudios.net/">NKStudios</a>, <a href="http://www.netsud.com/">NetSud</a>) and independently.</dd>
+          <dt>2006 onwards:</dt>
+          <dd>Work as a <em>freelance web developer</em> for <a href="http://www.echomedia.co/aboutus/">Echo Media, Inc.</a> as the maintainer of <a href="http://www.bandmix.com/">BandMix</a> and independently.</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Notes:</h2>
+        <dl>
+          <dt id="note-1">1</dt>
+          <dd>I'm not a graphic designer, I'm only hobbyist in this area.</dd>
+        </dl>
+      </section>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

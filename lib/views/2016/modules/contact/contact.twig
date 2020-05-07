@@ -1,0 +1,108 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1>Contacto</h1>
+      <p class="h-adr">
+        Para comunicarse conmigo puede enviarme un e-mail escribiendo a
+        <a class="u-email"  href="{{ app.email_encoded_uri|raw }}">{{ app.email_encoded|raw }}</a>
+        o utilizar el siguiente formulario, que es lo mismo.
+        <span class="p-tel">+54 9 342 521-1004</spanb>
+      </p>
+      <hr>
+
+      <form id="contact" method="post" {{ app.production ?: 'novalidate' }}>
+        {% if _GET.ok %}
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4>El mensaje se ha enviado con éxito.</h4>
+          <p>
+            Su mensaje ha sido enviado a
+            <a href="{{ app.email_encoded_uri|raw }}">{{ app.email_encoded|raw }}</a>.
+            De ser necesario, me contactaré con Usted a la brevedad.
+          </p>
+        </div>
+        {% endif %}
+
+        {% if _ERROR %}
+        {% include '@2016/common/form-generic-message-error.twig' %}
+        {% endif %}
+
+        <fieldset>
+          <div class="form-group required {{ _ERROR.full_name ? 'has-error' }}">
+            <label class="control-label" for="full_name">Nombre y apellido:</label>
+            <input class="form-control" id="full_name" name="full_name" placeholder="Nombre y apellido" type="text" value="{{ _POST.full_name }}" required>
+            <span class="help-block {{ _ERROR.full_name ?: 'hidden' }}">
+              Por favor, complete correctamente su <strong>nombre y apellido</strong>.
+            </span>
+          </div>
+
+          <div class="form-group required {{ _ERROR.email ? 'has-error' }}">
+            <label class="control-label" for="email">E-mail:</label>
+            <input class="form-control" id="email" name="email" placeholder="E-mail" type="email" value="{{ _POST.email }}" required>
+            <span class="help-block {{ _ERROR.email_invalid ?: 'hidden' }}">
+              La dirección de e-mail ingresada <strong>no es válida</strong>.
+            </span>
+            <span class="help-block {{ _ERROR.email ?: 'hidden' }}">
+              Por favor, complete correctamente su <strong>dirección de e-mail</strong>.
+            </span>
+          </div>
+
+          <div class="form-group {{ _ERROR.phone ? 'has-error' }}">
+            <label class="control-label" for="phone">Teléfono:</label>
+            <input class="form-control" id="phone" name="phone" placeholder="Teléfono" type="tel" value="{{ _POST.phone }}">
+            <small class="help-block text-info">
+              Ejemplo: +54 9 342 ### ####
+            </small>
+            <span class="help-block {{ _ERROR.phone ?: 'hidden' }}">
+              Por favor, complete correctamente su <strong>número de teléfono</strong>.
+            </span>
+          </div>
+
+          <div class="form-group required {{ _ERROR.subject ? 'has-error' }}">
+            <label class="control-label" for="subject">Asunto:</label>
+            <input class="form-control" id="subject" name="subject" placeholder="Motivo del mensaje" type="text" value="{{ _POST.subject }}" required>
+            <span class="help-block {{ _ERROR.subject ?: 'hidden' }}">
+              Por favor, complete correctamente el <strong>asunto del mensaje</strong>.
+            </span>
+          </div>
+
+          <div class="form-group required {{ _ERROR.message ? 'has-error' }}">
+            <label class="control-label" for="message">Mensaje:</label>
+            <textarea class="form-control" id="message" name="message" placeholder="Ingrese su mensaje aquí." rows="8" cols="20" required>{{ _POST.message }}</textarea>
+            <span class="help-block {{ _ERROR.message ?: 'hidden' }}">
+              Por favor, complete correctamente el <strong>cuerpo del mensaje</strong>.
+            </span>
+          </div>
+        </fieldset>
+
+        <p class="text-danger {{ _ERROR.captcha ?: 'hidden' }}">
+          Por favor, habilite JavaScript en su navegador para enviar este formulario.
+        </p>
+
+        <p class="text-center">
+          <input type="hidden" name="captcha" id="captcha">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+  {{ parent() }}
+  <script>
+  $(function() {
+      $('#contact').submit(function() {
+          $('#captcha').val($('#email').val().length);
+      });
+  });
+  </script>
+{% endblock %}

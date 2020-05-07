@@ -1,0 +1,22 @@
+{% extends '@2016/base.twig' %}
+
+{% block title %}404 - Recurso no encontrado - {{ app.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>404 - Recurso no encontrado.</h1>
+  <h2>La página solicitada no se ha encontrado en el sistema.</h2>
+  <p>
+    Puede que haya seguido un enlace roto o la dirección (URL) tenga algún error
+    de tipeo. Si lo desea puede probar uno de los siguientes enlaces:
+  </p>
+  <dl>
+    <dt><a href="/">Página principal</a></dt>
+    <dd>Ir a la página principal de {{ app.name }}.</dd>
+    <dt><a href="/sitemap/">Mapa del sitio</a></dt>
+    <dd>Ver el mapa del sitio.</dd>
+    <dt><a href="/contact/">El enlace no funciona?</a></dt>
+    <dd>Envíeme un e-mail.</dd>
+  </dl>
+</div>
+{% endblock %}

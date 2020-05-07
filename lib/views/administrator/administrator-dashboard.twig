@@ -1,0 +1,40 @@
+{% extends 'administrator/administrator-base.twig' %}
+
+{% block title %}Dashboard - {{ APP_NAME }} Administrator{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Control Panel for <a href="//{{ app.domain }}/">{{ app.name }}</a>.</h1>
+      <h2>Quick Actions Panel</h2>
+      <ul>
+        <li><a href="/.admin/google-sitemaps/" title="Google Sitemaps">Google Sitemaps</a></li>
+        <li><a href="/.admin/technorati-ping/" title="Technorati Ping">Technorati Ping</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Blog &raquo; Latest comments.</h2>
+      {% if comments %}
+      {#% include 'comments-list.twig' %#}
+      {% else %}
+      <p>
+        The comments list is empty.
+      </p>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <h2>Blog &raquo; Latest posts.</h2>
+      {% if posts %}
+      {#% include 'comments-list.twig' %#}
+      {% else %}
+      <p>
+        The posts list is empty.
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

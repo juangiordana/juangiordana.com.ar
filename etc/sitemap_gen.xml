@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site
+  base_url="https://www.juangiordana.com.ar/"
+  default_encoding="UTF-8"
+  store_into="/srv/www/juangiordana.com.ar/www/sitemap.xml"
+  suppress_search_engine_notify="0"
+  verbose="1"
+>
+
+  <urllist path="/tmp/juangiordana.com.ar-urllist.txt" />
+
+  <!-- Exclude URLs that end with a '~'   (IE: emacs backup files)      -->
+  <filter  action="drop"  type="wildcard"  pattern="*~"           />
+
+  <!-- Exclude URLs within UNIX-style hidden files or directories       -->
+  <filter  action="drop"  type="regexp"    pattern="/\.[^/]*"     />
+
+</site>
