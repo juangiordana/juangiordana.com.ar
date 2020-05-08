@@ -1,10 +1,12 @@
-{% extends '/base.twig' %}
 {% import 'administrator/macros/forms.twig' as forms %}
-
-{% block title %}{{ APP_NAME }} Administrator{% endblock %}
-
+<!doctype html>
+<html class="no-js" lang="{% block locale %}{{ app.locale }}{% endblock %}">
+<head>
 {% block head %}
-  {{ parent() }}
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ app.name }} Administrator{% endblock %}</title>
   {% if app.production %}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
@@ -13,9 +15,12 @@
   <link href="/css/font-awesome-4.7.0.min.css" rel="stylesheet">
   {% endif %}
   <link rel="stylesheet" href="/css/administrator/styles.css">
+  <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');</script>
 {% endblock %}
-
+</head>
+<body>
 {% block body %}
+
   <!-- header id="header">
     {% block header %}
     <p>
@@ -131,10 +136,8 @@
       Copyright {{ 'now'|date('Y') }} <a href="//{{ APP_DOMAIN }}/" title="{{ APP_TITLE }}">{{ APP_NAME }}</a>.
     </p>
   </footer>
-{% endblock %}
 
-{% block script %}
-  {{ parent() }}
+  {% block script %}
   {% if app.production %}
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
   {% endif %}
@@ -147,4 +150,8 @@
   {% endif %}
 
   <script src="/js/administrator/main.js{{ CSS_CACHE_BUSTER }}"></script>
+  {% endblock %}
+
 {% endblock %}
+</body>
+</html>
