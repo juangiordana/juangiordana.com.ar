@@ -4,7 +4,7 @@
 
 {% block head %}
   {{ parent() }}
-  <meta name="description" content="Argentinian web developer - Juan Giordana">
+  <meta name="description" content="Argentinian full stack web developer - Juan Giordana">
   <meta name="google-site-verification" content="GHMUjEHsEcglPZjoknzKgD-XVcCXRJBBzYN9MvxZ-O4">
 {% endblock %}
 
@@ -22,9 +22,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container" lang="en">
   <div class="row">
-    <div class="col-sm-9" lang="en">
+    <div class="col-sm-12">
       <section>
         <p>
           Hello, I'm Juan Giordana, a full-stack developer and technologist from
@@ -51,7 +51,6 @@
           website from the ground up using Linux, Nginx, PHP, MySQL, HTML, CSS
           and JavaScript.
         </p>
-
         <ul>
           <li>Full-stack web application development on LAMP/LEMP systems.</li>
           <li>Rich, dynamic front-end JavaScript development with and without frameworks.</li>
@@ -62,40 +61,11 @@
           <li>Database development with MySQL.</li>
           <li>Experience with mobile and responsive web applications.</li>
         </ul>
-      </section>
-
-      <section>
-        <h2>Projects</h2>
-        <ul>
-          <li>
-            <a href="//www.bandmix.com">BandMix</a>
-            <br>
-            BandMix is a service that connects musicians and bands together.
-            <br><br>
-          </li>
-          <li>
-            <a href="//www.vialfe.com.ar">VialFe</a>
-            <br>
-            VialFe is an Argentinian company dedicated to the  Heavy Equipment trading
-            and rent.
-            <br><br>
-          </li>
-        </ul>
         <p>
           You can have a more detailed view of my work in my online <a href="/resume/">resumé</a>.
         </p>
       </section>
     </div>
-    <div class="col-sm-3">
-      <div class="g-person" data-href="//plus.google.com/u/0/117766208960754000890" data-rel="author"></div>
-      <div class="github-card" data-user="juangiordana" data-theme="default"></div>
-    </div>
   </div>
 </div>
-{% endblock %}
-
-{% block script %}
-  {{ parent() }}
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="https://lab.lepture.com/github-cards/widget.js"></script>
 {% endblock %}
