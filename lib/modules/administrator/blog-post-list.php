@@ -97,7 +97,7 @@ if ($total > 0) {
     $posts = blogPostInfo($result);
 }
 
-$template = $twig->loadTemplate('administrator/administrator-blog-posts-list.twig');
+$template = 'administrator/administrator-blog-posts-list.twig';
 
 $templateVars = [
     'pager' => $pager,

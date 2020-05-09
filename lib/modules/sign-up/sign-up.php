@@ -53,4 +53,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-$template = $twig->loadTemplate($app['template'] . '/modules/' . basename(__DIR__). '/' . basename(__FILE__, '.php') . '.twig');
+$template = $app['template'] . '/modules/' . basename(__DIR__). '/' . basename(__FILE__, '.php') . '.twig';

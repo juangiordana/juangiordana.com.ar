@@ -78,42 +78,39 @@ if (!$http['404']) {
             exit;
         }
 
-        /**
-         * Load Twig.
-         */
-        Twig_Autoloader::register();
-
-        $loader = new Twig_Loader_Filesystem([
-            APP_PATH . '/lib/views'
-        ]);
-
-        $loader->addPath(APP_PATH . '/lib/views/2016', '2016');
-        $loader->addPath(APP_PATH . '/lib/views/administrator', 'administrator');
-
-        $twig = new Twig_Environment($loader);
-
-        if (!$app['production']) {
-            $twig->addExtension(new Twig_Extension_Debug());
-        }
-
         require $rewrite;
 
-        $twig->addGlobal('app', $app);
-        $twig->addGlobal('act', $act);
-
-        $twig->addGlobal('pager', ( isset($pager) ? $pager : null ));
-
-        $twig->addGlobal('_GET', $_GET);
-        $twig->addGlobal('_POST', $_POST);
-        $twig->addGlobal('_REQUEST', $_REQUEST);
-        $twig->addGlobal('_ERROR', ( isset($error) ? $error : null ));
-
+        /**
+         * Twig.
+         */
         if (isset($template)) {
-            echo $template->render(
+            $loader = new \Twig\Loader\FilesystemLoader(APP_PATH . '/lib/views');
+            $loader->addPath(APP_PATH . '/lib/views/2016', '2016');
+            $loader->addPath(APP_PATH . '/lib/views/administrator', 'administrator');
+
+            $twig = new \Twig\Environment($loader, [
+                'debug' => !$app['production'],
+            ]);
+
+            if (!$app['production']) {
+                $twig->addExtension(new Twig_Extension_Debug());
+            }
+
+            $twig->addGlobal('app', $app);
+            $twig->addGlobal('act', $act);
+
+            $twig->addGlobal('pager', ( isset($pager) ? $pager : null ));
+
+            $twig->addGlobal('_GET', $_GET);
+            $twig->addGlobal('_POST', $_POST);
+            $twig->addGlobal('_REQUEST', $_REQUEST);
+            $twig->addGlobal('_ERROR', ( isset($error) ? $error : null ));
+
+            echo $twig->render(
+                $template,
                 ( isset($templateVars) ? $templateVars : [] )
             );
         }
-
         return;
     }
 

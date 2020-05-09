@@ -110,7 +110,7 @@ EOD;
     $_POST = $req + $opt;
 }
 
-$template = $twig->loadTemplate('administrator/administrator-settings-edit.twig');
+$template = 'administrator/administrator-settings-edit.twig';
 
 $templateVars = array(
     'settings' => $settings

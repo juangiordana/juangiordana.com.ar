@@ -7,4 +7,4 @@ if (isset($_SESSION['admin'])) {
     unset($_SESSION['admin']);
 }
 
-$template = $twig->loadTemplate('administrator/administrator-logout.twig');
+$template = 'administrator/administrator-logout.twig';

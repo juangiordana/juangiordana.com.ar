@@ -7,7 +7,7 @@ if (isset($_FILES['code']) and is_uploaded_file($_FILES['code']['tmp_name'])) {
     $code = highlight_file($_FILES['code']['tmp_name'], true);
 }
 
-$template = $twig->loadTemplate('administrator/administrator-php-highlight.twig');
+$template = 'administrator/administrator-php-highlight.twig';
 
 echo $template->render(
     array(

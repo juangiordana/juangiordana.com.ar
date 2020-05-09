@@ -97,7 +97,7 @@ EOD;
     $_POST = $req + $opt;
 }
 
-$template = $twig->loadTemplate('administrator/administrator-blog-posts-add.twig');
+$template = 'administrator/administrator-blog-posts-add.twig';
 
 $templateVars = array(
     'categories' => $categories,

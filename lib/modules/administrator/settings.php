@@ -67,7 +67,7 @@ if (!empty($_POST)) {
     $_POST = $req + $opt;
 }
 
-$template = $twig->loadTemplate('administrator/administrator-settings.twig');
+$template = 'administrator/administrator-settings.twig';
 
 $templateVars = array(
     'settings' => $settings

@@ -97,4 +97,4 @@ foreach (($req + $opt) as $k => $v) {
 }
 unset($k, $v);
 
-$template = $twig->loadTemplate($app['template'] . '/modules/' . basename(__DIR__, '.php') . '/' . basename(__FILE__, '.php') . '.twig');
+$template = $app['template'] . '/modules/' . basename(__DIR__, '.php') . '/' . basename(__FILE__, '.php') . '.twig';

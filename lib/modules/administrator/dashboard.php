@@ -11,7 +11,7 @@ $posts = blogPostInfo($result);
 
 $comments = array();
 
-$template = $twig->loadTemplate('administrator/administrator-dashboard.twig');
+$template = 'administrator/administrator-dashboard.twig';
 
 $templateVars = array(
     'comments' => $comments,
