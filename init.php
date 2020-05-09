@@ -10,12 +10,13 @@ require __DIR__ . '/config.php';
  *  Split REQUEST_URI at the slashes.
  *  Look if anything in the application matches the request.
  */
+$home = $_SERVER['REQUEST_URI'] == '/';
 $path = parse_url($_SERVER['REQUEST_URI']);
 $uri = strip_tags($path['path']);
 $uri = strtolower($uri);
 $uri = trim($uri, '/');
 
-$http['301'] = ( strcmp($path['path'], "/$uri/") != 0 );
+$http['301'] = ( !$home && strcmp($path['path'], "/$uri/") != 0 );
 $http['404'] = false;
 
 /**
@@ -29,16 +30,17 @@ unset($matches);
 
 $level = explode('/', $uri);
 $depth = count($level);
-$resource = end($level);
 
-foreach ($level as &$v) {
-    $v = trim($v);
-    if (empty($v)) {
-        $http['404'] = true;
-        break;
+if (!$home) {
+    foreach ($level as &$v) {
+        $v = trim($v);
+        if (empty($v)) {
+            $http['404'] = true;
+            break;
+        }
     }
+    unset($v);
 }
-unset($v);
 
 /**
  * Sections.
@@ -47,7 +49,7 @@ unset($v);
  * Modules.
  *  Every resource that receives GET or POST data must be a module.
  */
-if (!$http['404'] && $depth > 0) {
+if (!$http['404']) {
     $modules = [
         '.admin' => 'administrator',
         'blog' => 'blog',
@@ -60,7 +62,7 @@ if (!$http['404'] && $depth > 0) {
         'sign-up' => 'sign-up',
     ];
 
-    $section = APP_PATH . '/lib/default/' . str_replace('/', '-', $uri) . '.php';
+    $section = APP_PATH . '/lib/default/' . ( $home ? 'index' : str_replace('/', '-', $uri) ) . '.php';
 
     if (is_file($section)) {
         $rewrite = $section;
