@@ -62,14 +62,14 @@ if (!$http['404']) {
         'sign-up' => 'sign-up',
     ];
 
-    $section = APP_PATH . '/lib/default/' . ( $home ? 'index' : str_replace('/', '-', $uri) ) . '.php';
+    $section = APP_PATH . '/lib/Controllers/' . ( $home ? 'index' : str_replace('/', '-', $uri) ) . '.php';
 
     if (is_file($section)) {
         $rewrite = $section;
     } elseif (isset($modules[$level[0]])) {
-        require APP_PATH . '/lib/modules/' . $modules[$level[0]] . '/.main.php';
+        require APP_PATH . '/lib/Controllers/' . $modules[$level[0]] . '/.main.php';
     } else {
-        require APP_PATH . '/lib/modules/rewrite/.main.php';
+        require APP_PATH . '/lib/Controllers/rewrite/.main.php';
     }
 
     if (isset($rewrite)) {
@@ -119,7 +119,7 @@ if (!$http['404']) {
      *  Prevent parsing too long strings with the regular expressions engine.
      */
     if (strlen($_SERVER['REQUEST_URI']) < 100) {
-        require APP_PATH . '/lib/modules/rewrite/link-rot.php';
+        require APP_PATH . '/lib/Controllers/rewrite/link-rot.php';
     }
 }
 
