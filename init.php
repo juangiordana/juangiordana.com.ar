@@ -84,8 +84,8 @@ if (!$http['404']) {
          * Twig.
          */
         if (isset($template)) {
-            $loader = new \Twig\Loader\FilesystemLoader(APP_PATH . '/lib/views');
-            $loader->addPath(APP_PATH . '/lib/views/2016', '2016');
+            $loader = new \Twig\Loader\FilesystemLoader(APP_PATH . '/lib/Views');
+            $loader->addPath(APP_PATH . '/lib/Views/2016', '2016');
             $loader->addPath(APP_PATH . '/lib/views/administrator', 'administrator');
 
             $twig = new \Twig\Environment($loader, [

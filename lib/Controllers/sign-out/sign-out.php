@@ -7,4 +7,4 @@ if ($act) {
     $userService->logout();
 }
 
-$template = $app['template'] . '/modules/' . basename(__DIR__). '/' . basename(__FILE__, '.php') . '.twig';
+$template = $app['template'] . DIRECTORY_SEPARATOR . basename(__DIR__) . DIRECTORY_SEPARATOR . basename(__FILE__, '.php') . '.twig';

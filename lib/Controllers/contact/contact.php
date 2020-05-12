@@ -97,4 +97,4 @@ foreach (($req + $opt) as $k => $v) {
 }
 unset($k, $v);
 
-$template = $app['template'] . '/modules/' . basename(__DIR__, '.php') . '/' . basename(__FILE__, '.php') . '.twig';
+$template = $app['template'] . DIRECTORY_SEPARATOR . basename(__DIR__, '.php') . DIRECTORY_SEPARATOR . basename(__FILE__, '.php') . '.twig';
