@@ -38,8 +38,8 @@
             <li><strong>Nacionalidad:</strong> Argentino</li>
             <li><strong>Estado civil:</strong> Soltero</li>
             <li><strong>Edad:</strong> {{ age }} años</li>
-            <li><strong>E-mail:</strong> <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#106;&#117;&#097;&#110;&#103;&#105;&#111;&#114;&#100;&#097;&#110;&#097;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#106;&#117;&#097;&#110;&#103;&#105;&#111;&#114;&#100;&#097;&#110;&#097;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a></li>
-            <li><strong>Móvil:</strong> +54 (342) 5211 004</li>
+            <li><strong>E-mail:</strong> <a class="u-email" href="{{ app.email_encoded_uri|raw }}">{{ app.email_encoded|raw }}</a></li>
+            <li><strong>Móvil:</strong> <a class="p-tel" href="tel:+5493425211004">+54 9 (342) 521-1004</a></li>
           </ul>
         </div>
 
