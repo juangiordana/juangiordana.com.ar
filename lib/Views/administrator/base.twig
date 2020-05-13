@@ -8,10 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ app.name }} Administrator{% endblock %}</title>
   {% if app.production %}
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   {% else %}
-  <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+  <link href="/css/bootstrap-3.4.1.min.css" rel="stylesheet">
   <link href="/css/font-awesome-4.7.0.min.css" rel="stylesheet">
   {% endif %}
   <link rel="stylesheet" href="/css/administrator/styles.css">
@@ -143,9 +143,9 @@
   <script>window.jQuery || document.write('<script src="/js/jquery-3.1.0.min.js"><\/script>')</script>
 
   {% if app.production %}
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
   {% else %}
-  <script src="/js/bootstrap-3.3.7.min.js"></script>
+  <script src="/js/bootstrap-3.4.1.min.js"></script>
   {% endif %}
 
   <script src="/js/administrator/main.js"></script>
