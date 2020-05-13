@@ -69,9 +69,9 @@ function validateRequest($req = [], $opt = [])
     unset($k, $v);
 
     return [
-        $r ?: null,
-        $o ?: null,
-        $error ?: null,
+        isset($r) ? $r : null,
+        isset($o) ? $o : null,
+        isset($error) ? $error : null,
     ];
 }
 

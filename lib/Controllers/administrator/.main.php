@@ -8,6 +8,9 @@ if (!defined('APP_NAME')) {
  */
 header('X-Robots-Tag: noindex, nofollow');
 
+include APP_PATH . '/lib/Controllers/blog/includes/database.php';
+include APP_PATH . '/lib/Controllers/blog/includes/functions.php';
+
 if (!$act) {
     /**
      * Session has been closed or has expired.
@@ -34,7 +37,7 @@ if ($depth == 1) {
      * Remove "/$level[0]" from $uri.
      */
     $section = substr_replace($uri, '', 0, (strlen($level[0]) + 1));
-    $section = __DIR__ . '/' . str_replace('/', '-', $section) . '.php';
+    $section = __DIR__ . DIRECTORY_SEPARATOR . str_replace(DIRECTORY_SEPARATOR, '-', $section) . '.php';
 
     if (is_file($section)) {
         $rewrite = $section;

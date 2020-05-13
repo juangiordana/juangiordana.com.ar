@@ -62,7 +62,7 @@ if (!$http['404']) {
         'sign-up' => 'sign-up',
     ];
 
-    $section = APP_PATH . '/lib/Controllers/' . ( $home ? 'index' : str_replace('/', '-', $uri) ) . '.php';
+    $section = APP_PATH . '/lib/Controllers/' . ( $home ? 'index' : str_replace(DIRECTORY_SEPARATOR, '-', $uri) ) . '.php';
 
     if (is_file($section)) {
         $rewrite = $section;
@@ -86,7 +86,7 @@ if (!$http['404']) {
         if (isset($template)) {
             $loader = new \Twig\Loader\FilesystemLoader(APP_PATH . '/lib/Views');
             $loader->addPath(APP_PATH . '/lib/Views/2016', '2016');
-            $loader->addPath(APP_PATH . '/lib/views/administrator', 'administrator');
+            $loader->addPath(APP_PATH . '/lib/Views/administrator', 'administrator');
 
             $twig = new \Twig\Environment($loader, [
                 'debug' => !$app['production'],

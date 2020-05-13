@@ -1,6 +1,6 @@
-{% extends 'administrator/administrator-base.twig' %}
+{% extends '@administrator/base.twig' %}
 
-{% block title %}Dashboard - {{ APP_NAME }} Administrator{% endblock %}
+{% block title %}Settings - {{ parent() }}{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -13,9 +13,7 @@
 
       {% if settings %}
       <form method="post">
-        {% if _ERROR %}
-        {% include 'administrator/common/form-error-banner.twig' %}
-        {% endif %}
+        {{ include('@administrator/common/form-error-banner.twig') }}
 
         {% if _ERROR.settings %}
         <p>
@@ -37,7 +35,7 @@
             {% for setting in settings %}
             <tr>
               <td>
-                <input {{ setting.name in _POST.r.settings ? 'checked' }} id="{{ setting.name }}" name="r[settings][]" type="checkbox" value="{{ setting.name }}">
+                <input {{ setting.name in _POST.settings ? 'checked' }} id="{{ setting.name }}" name="settings[]" type="checkbox" value="{{ setting.name }}">
               </td>
               <td class="text-left">
                 <label for="{{ setting.name }}">{{ setting.title }}</label>

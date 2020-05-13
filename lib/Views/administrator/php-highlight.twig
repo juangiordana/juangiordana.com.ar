@@ -1,0 +1,37 @@
+{% extends '@administrator/base.twig' %}
+
+{% block title %}Highlight file - {{ parent() }} {% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Highlight PHP file.</h2>
+
+      <form enctype="multipart/form-data" method="post" role="form">
+        <div class="form-group">
+          <label for="code">Upload PHP file</label>
+          <input type="file" name="code" id="code" />
+          <p class="help-block">Upload PHP or HTML file.</p>
+        </div>
+        <button type="submit" class="btn btn-default">Highlight</button>
+      </form>
+      <hr>
+    </div>
+  </div>
+
+  {% if code %}
+  <div class="row">
+    <div class="col-md-12">
+      <textarea class="form-control" rows="5" onclick="javascript:this.select()">{{ code }}</textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div>{{ code|raw }}</div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -3,20 +3,37 @@ if (!defined('APP_NAME')) {
     trigger_error('APP_NAME is not defined in: ' . __FILE__ . '.', E_USER_ERROR);
 }
 
-require APP_PATH . '/include/tuples/blog.php';
+/**
+ * Tuples.
+ */
+$query = 'SELECT `id`, `name` FROM `categories`';
+$stmt = $dbh->query($query);
+$categories = $stmt->fetchAll();
+
+$posts = blogPostInfo(array( isset($_REQUEST['id']) ? $_REQUEST['id'] : FALSE ));
+$post = $posts[0];
+
+$comments = blogPostComments($post['id']);
+
+if (!$post) {
+    header ('Location: /.admin/');
+    exit;
+}
+
 
 $req = array(
-    'category' => $categories[0],
-    'contents' => '',
-    'title' => '',
-    'uri' => ''
+    'category' => $post['categoryid'],
+    'contents' => $post['contents'],
+    'title' => $post['title'],
+    'uri' => $post['uri']
 );
 
 $opt = array(
-    'denycomments' => '',
-    'display' => '',
-    'featured' => '',
-    'html' => ''
+    'modificationdate' => $post['modificationdate'],
+    'denycomments' => $post['denycomments'],
+    'display' => $post['display'],
+    'featured' => $post['featured'],
+    'html' => $post['xhtml']
 );
 
 if (!empty($_POST)) {
@@ -39,8 +56,8 @@ if (!empty($_POST)) {
      * Validate optional fields.
      */
     foreach ($opt as $k => &$v) {
-        if (isset($_POST[$k])) {
-            $o[$k] = validateField($_POST[$k]);
+        if (isset($_POST['o'][$k])) {
+            $o[$k] = validateField($_POST['o'][$k]);
         } else {
             $o[$k] = '';
         }
@@ -48,6 +65,8 @@ if (!empty($_POST)) {
     unset($k, $v);
 
     if (!isset($error)) {
+        $o['modificationdate'] = ( !empty($o['modificationdate']) ? $_SERVER['REQUEST_TIME'] : $post['modificationdate'] );
+
         $o['html'] = ( empty($o['html']) ? 0 : 1 );
         $o['display'] = ( empty($o['display']) ? 0 : 1 );
         $o['featured'] = ( empty($o['featured']) ? 0 : 1 );
@@ -62,12 +81,12 @@ if (!empty($_POST)) {
 
     if (!isset($error)) {
         $query = <<< 'EOD'
-INSERT INTO
+UPDATE
     `posts`
 SET
     `userid` = ?,
     `categoryid` = ?,
-    `submitiondate` = ?,
+    `modificationdate` = ?,
     `uri` = ?,
     `title` = ?,
     `contents` = ?,
@@ -75,31 +94,37 @@ SET
     `display` = ?,
     `featured` = ?,
     `denycomments` = ?
+WHERE
+    `id` = ?
+LIMIT 1
 EOD;
         $stmt = $dbh->prepare($query);
         $stmt->execute(array(
             $_SESSION['admin']['id'],
             $r['category'],
-            $_SERVER['REQUEST_TIME'],
+            $o['modificationdate'],
             $r['uri'],
             $r['title'],
             $r['contents'],
             $o['html'],
             $o['display'],
             $o['featured'],
-            $o['denycomments']
+            $o['denycomments'],
+            $post['id']
         ));
 
-        header('Location: /.admin/blog-post-edit/?id=' . $dbh->lastInsertId());
+        header('Location: /.admin/blog-post-edit/?id=' . $post['id'] . '&ok=1');
         exit;
     }
 } else {
     $_POST = $req + $opt;
 }
 
-$template = 'administrator/administrator-blog-posts-add.twig';
+$template = '@administrator/' . basename(__FILE__, '.php') . '.twig';
 
 $templateVars = array(
     'categories' => $categories,
-    'error' => ( isset($error) ? $error : array() )
+    'comments' => $comments,
+    'error' => ( isset($error) ? $error : array() ),
+    'post' => $post
 );

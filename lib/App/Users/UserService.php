@@ -19,6 +19,7 @@ use App\Users\User;
 class UserService
 {
     private $_dbh;
+
     protected $userId = null;
 
     /**
@@ -54,7 +55,7 @@ class UserService
         try {
             $this->_dbh->beginTransaction();
 
-            $password = password_hash($r['$password'], PASSWORD_DEFAULT);
+            $password = $this->passwordHash($r['password']);
 
             $query = <<< 'EOD'
 INSERT INTO
@@ -73,7 +74,7 @@ EOD;
                 $r['last_name'],
             ]);
 
-            $userId = $this->dbh->lastInsertId();
+            $userId = $this->_dbh->lastInsertId();
 
             $query = 'INSERT INTO `users_meta` SET `user_id` = ?';
             $stmt = $this->_dbh->prepare($query);
@@ -173,7 +174,7 @@ EOD;
         $stmt = $this->_dbh->prepare($query);
         $stmt->execute([ $username ]);
         if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            if (password_verify($password, $row['password'])) {
+            if ($this->passwordVerify($password, $row['password'])) {
                 $this->userId = $row['id'];
                 return true;
             }
@@ -225,5 +226,15 @@ EOD;
         $stmt->execute([ $lastLogin, $this->userId ]);
 
         return $lastLogin;
+    }
+
+    public static function passwordHash($password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    public static function passwordVerify($password, $hash)
+    {
+        return password_verify($password, $hash);
     }
 }

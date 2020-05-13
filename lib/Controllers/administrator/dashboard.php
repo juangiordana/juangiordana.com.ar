@@ -9,11 +9,11 @@ $result = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 $posts = blogPostInfo($result);
 
-$comments = array();
+$comments = [];
 
-$template = 'administrator/administrator-dashboard.twig';
+$template = '@administrator/' . basename(__FILE__, '.php') . '.twig';
 
-$templateVars = array(
+$templateVars = [
     'comments' => $comments,
     'posts' => $posts
-);
+];

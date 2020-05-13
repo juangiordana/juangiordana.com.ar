@@ -8,39 +8,14 @@ $query = sprintf($query, ( PRODUCTION ? 'value_production' : 'value_development'
 $stmt = $dbh->query($query);
 $settings = $stmt->fetchAll();
 
-$req = array(
-    'settings' => ( isset($_SESSION['admin']['settings']) ? $_SESSION['admin']['settings'] : array() ),
-);
+$req = [
+    'settings' => ( isset($_SESSION['admin']['settings']) ? $_SESSION['admin']['settings'] : [] ),
+];
 
-$opt = array();
+$opt = [];
 
-if (!empty($_POST)) {
-    /**
-     * Validate required fields.
-     */
-    foreach ($req as $k => &$v) {
-        if (!isset($_POST[$k])) {
-            $error[$k] = 1;
-        } else {
-            $r[$k] = validateField($_POST[$k]);
-            if ($r[$k] == '') {
-                $error[$k] = 1;
-            }
-        }
-    }
-    unset($k, $v);
-
-    /**
-     * Validate optional fields.
-     */
-    foreach ($opt as $k => &$v) {
-        if (isset($_POST[$k])) {
-            $o[$k] = validateField($_POST[$k]);
-        } else {
-            $o[$k] = '';
-        }
-    }
-    unset($k, $v);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    list($r, $o, $error) = validateRequest($req, $opt);
 
     if (isset($_SESSION['admin']['settings'])) {
         unset($_SESSION['admin']['settings']);
@@ -48,7 +23,7 @@ if (!empty($_POST)) {
 
     if (!isset($error)) {
         $r['settings'] = array_intersect(
-            array_column('name', $settings),
+            array_column($settings, 'name'),
             $r['settings']
         );
 
@@ -67,8 +42,8 @@ if (!empty($_POST)) {
     $_POST = $req + $opt;
 }
 
-$template = 'administrator/administrator-settings.twig';
+$template = '@administrator/' . basename(__FILE__, '.php') . '.twig';
 
-$templateVars = array(
-    'settings' => $settings
-);
+$templateVars = [
+    'settings' => $settings,
+];

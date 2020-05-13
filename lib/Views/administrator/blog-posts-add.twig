@@ -1,4 +1,4 @@
-{% extends 'administrator/administrator-base.twig' %}
+{% extends '@administrator/base.twig' %}
 
 {% block title %}Add post - {{ APP_NAME }} Administrator{% endblock %}
 
@@ -17,9 +17,7 @@
       </div>
       {% endif %}
 
-      {% if _ERROR %}
-      {% include 'administrator/common/form-error-banner.twig' %}
-      {% endif %}
+      {{ include('@administrator/common/form-error-banner.twig') }}
     </div>
   </div>
 

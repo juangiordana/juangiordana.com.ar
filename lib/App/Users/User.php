@@ -10,6 +10,7 @@ namespace App\Users;
 class User
 {
     private $_dbh;
+
     protected $user;
 
     /**
@@ -55,11 +56,19 @@ EOD;
 
         if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $this->user = $row;
-
             return true;
         }
 
         return false;
+    }
+
+    public function __get($name)
+    {
+        if (array_key_exists($name, $this->user)) {
+            return $this->user[$name];
+        }
+
+        throw new \Exception('Undefined property via __get(): ' . $name);
     }
 
     public function __toString()
@@ -95,5 +104,15 @@ EOD;
     public function getLastLogin()
     {
         return $this->user['last_login'];
+    }
+
+
+    public function setPassword($hash)
+    {
+        $query = 'UPDATE `users` SET `password` = ? WHERE `id` = ? LIMIT 1';
+        $stmt = $this->_dbh->prepare($query);
+        $stmt->execute([ $hash, $this->user['id'] ]);
+
+        return true;
     }
 }

@@ -8,7 +8,7 @@ if (empty($_SESSION['admin']['settings'])) {
     exit;
 }
 
-$params = array();
+$params = [];
 $place_holders = '';
 
 $params = array_values($_SESSION['admin']['settings']);
@@ -33,8 +33,7 @@ $stmt->execute($params);
 $settings = $stmt->fetchAll();
 
 
-$req =
-$opt = array();
+$req = $opt = [];
 
 foreach ($settings as $k => &$v) {
     $req['setting_name_' . $k] = $v['name'];
@@ -45,33 +44,8 @@ foreach ($settings as $k => &$v) {
 }
 unset($k, $v);
 
-if (!empty($_POST)) {
-    /**
-     * Validate required fields.
-     */
-    foreach ($req as $k => &$v) {
-        if (!isset($_POST[$k])) {
-            $error[$k] = 1;
-        } else {
-            $r[$k] = validateField($_POST[$k]);
-            if ($r[$k] == '') {
-                $error[$k] = 1;
-            }
-        }
-    }
-    unset($k, $v);
-
-    /**
-     * Validate optional fields.
-     */
-    foreach ($opt as $k => &$v) {
-        if (isset($_POST[$k])) {
-            $o[$k] = validateField($_POST[$k]);
-        } else {
-            $o[$k] = '';
-        }
-    }
-    unset($k, $v);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    list($r, $o, $error) = validateRequest($req, $opt);
 
     if (!isset($error)) {
         foreach ($settings as $k => &$v) {
@@ -90,14 +64,14 @@ LIMIT 1
 EOD;
             $query = sprintf($query, ( PRODUCTION ? 'value_production' : 'value_development' ));
             $stmt = $dbh->prepare($query);
-            $stmt->execute(array(
+            $stmt->execute([
                 $r['setting_name_' . $k],
                 $o['setting_value_' . $k],
                 $r['setting_type_' . $k],
                 $r['setting_title_' . $k],
                 $o['setting_description_' . $k],
-                $v['name']
-            ));
+                $v['name'],
+            ]);
         }
         unset($k, $v);
 
@@ -110,8 +84,8 @@ EOD;
     $_POST = $req + $opt;
 }
 
-$template = 'administrator/administrator-settings-edit.twig';
+$template = '@administrator/' . basename(__FILE__, '.php') . '.twig';
 
-$templateVars = array(
-    'settings' => $settings
-);
+$templateVars = [
+    'settings' => $settings,
+];

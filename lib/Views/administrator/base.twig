@@ -1,4 +1,4 @@
-{% import 'administrator/macros/forms.twig' as forms %}
+{% import '@administrator/macros/forms.twig' as forms %}
 <!doctype html>
 <html class="no-js" lang="{% block locale %}{{ app.locale }}{% endblock %}">
 <head>
@@ -20,11 +20,10 @@
 </head>
 <body>
 {% block body %}
-
   <!-- header id="header">
     {% block header %}
     <p>
-      <a href="/.admin/"><span>{{ APP_NAME}} Administrator</span></a>
+      <a href="/.admin/"><span>{{ app.name }} Administrator</span></a>
     </p>
     {% endblock %}
   </header -->
@@ -41,7 +40,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/.admin/">
-        <img src="/favicon.ico" width="16" height="16" alt="{{ APP_NAME }}"></a>
+        <img src="/favicon.ico" width="16" height="16" alt="{{ app.name }}"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,8 +50,8 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/.admin/blog-post-add/">Add post</a></li>
-              <li><a href="/.admin/blog-post-list/">List posts</a></li>
+              <li><a href="/.admin/blog/posts/add/">Add post</a></li>
+              <li><a href="/.admin/blog/posts/">List posts</a></li>
             </ul>
           </li>
 
@@ -79,7 +78,7 @@
               <li><a href="/.admin/settings/">Settings</a></li>
               <li><a href="/.admin/password/" title="Change Administrator's password">Password</a></li>
               <li class="divider"></li>
-              <li><a href="{{ PMA_URL }}" title="PhpMyAdmin">PhpMyAdmin</a></li>
+              <li><a href="{{ app.pma_url }}" title="PhpMyAdmin">PhpMyAdmin</a></li>
               <li><a href="/.admin/php-info/" title="PhpInfo">PhpInfo</a></li>
             </ul>
           </li>
@@ -119,7 +118,7 @@
             </ul>
           </li>
           <li>
-            <a href="/.admin/logout/">Logout</a>
+            <a href="/sign-out/">Logout</a>
           </li>
         </ul>
       </div>
@@ -132,8 +131,8 @@
   </div>
 
   <footer id="footer">
-    <p class="text-right">
-      Copyright {{ 'now'|date('Y') }} <a href="//{{ APP_DOMAIN }}/" title="{{ APP_TITLE }}">{{ APP_NAME }}</a>.
+    <p class="text-center">
+      Copyright {{ 'now'|date('Y') }} <a href="//{{ app.domain }}/">{{ app.name }}</a>.
     </p>
   </footer>
 
@@ -149,7 +148,7 @@
   <script src="/js/bootstrap-3.3.7.min.js"></script>
   {% endif %}
 
-  <script src="/js/administrator/main.js{{ CSS_CACHE_BUSTER }}"></script>
+  <script src="/js/administrator/main.js"></script>
   {% endblock %}
 
 {% endblock %}

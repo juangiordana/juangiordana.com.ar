@@ -1,6 +1,6 @@
-{% extends 'administrator/administrator-base.twig' %}
+{% extends '@administrator/base.twig' %}
 
-{% block title %}Dashboard - {{ APP_NAME }} Administrator{% endblock %}
+{% block title %}Dashboard - {{ parent() }}{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -18,7 +18,6 @@
     <div class="col-md-6">
       <h2>Blog &raquo; Latest comments.</h2>
       {% if comments %}
-      {#% include 'comments-list.twig' %#}
       {% else %}
       <p>
         The comments list is empty.
@@ -28,7 +27,6 @@
     <div class="col-md-6">
       <h2>Blog &raquo; Latest posts.</h2>
       {% if posts %}
-      {#% include 'comments-list.twig' %#}
       {% else %}
       <p>
         The posts list is empty.
