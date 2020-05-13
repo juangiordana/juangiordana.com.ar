@@ -1,0 +1,82 @@
+{% extends '@administrator/base.twig' %}
+
+{% block title %}Shell - {{ parent() }}{% endblock %}
+
+{% block head %}
+{{ parent() }}
+<style>
+.cmdwrap {
+  color: #090;
+  font-size: 1.25em;
+}
+
+.retval {
+  color: #a00;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Shell</h1>
+
+  <form action="/.admin/ajax/shell/" id="shell" method="post">
+    <div class="form-group">
+      <label class="sr-only" for="cmd">Command:</label>
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input autocomplete="off" autofocus="on" class="form-control input-lg" id="cmd" placeholder="Enter shell command..." required type="text">
+      </div>
+    </div>
+    <button class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing" id="submit" type="submit">Submit</button>
+  </form>
+
+  <hr>
+
+  <div id="response"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ parent() }}
+<script>
+$(document).ready(function() {
+    $('#shell').submit(function(event) {
+        event.preventDefault();
+
+        var cmd = $('#cmd').val();
+
+        $('#submit').button('loading');
+
+        $.ajax({
+            type: 'POST',
+            url: '/.admin/ajax/shell/',
+            data: { cmd: cmd },
+            dataType: 'json',
+            success: function(response) {
+                console.log(response.output);
+
+                $('<hr/>').prependTo('#response');
+
+                $('<pre/>', {text: response.output}).prependTo('#response');
+
+                $('#response').prepend(
+                    '<label class="cmdwrap">' +
+                    '$ <span class="cmd">' + cmd + '</span>' +
+                    ( (response.retval != 0) ? ' <span class="retval">(' + response.retval + ')</span>' : '' ) +
+                    '</label>'
+                );
+
+                $('#cmd').select();
+                $('#submit').button('reset');
+            }
+        });
+    });
+
+    $(document).on('click', '.cmdwrap', function() {
+        val = $(this).children('.cmd').text();
+        $('#cmd').val(val).select().focus();
+    });
+});
+</script>
+{% endblock %}
