@@ -4,10 +4,10 @@ if (!defined('APP_NAME')) {
 }
 
 $db['host'] = getenv('DB_HOST');
-$db['user'] = getenv('DB_NAME');
-$db['pass'] = getenv('DB_USER');
-$db['name'] = getenv('DB_PASS');
+$db['name'] = getenv('DB_NAME');
 $db['char'] = getenv('DB_CHAR');
+$db['user'] = getenv('DB_USER');
+$db['pass'] = getenv('DB_PASS');
 
 /**
  * Setup database connection.
