@@ -4,11 +4,15 @@
             "App\\": "lib/App/"
         }
     },
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
+    },
     "require": {
-        "php": "~5.6",
         "pear/pager": "^2.5",
-        "swiftmailer/swiftmailer": "^5.4",
-        "twig/twig": "^1.42",
-        "vlucas/phpdotenv": "^4.1"
+        "swiftmailer/swiftmailer": "^5.4.12",
+        "twig/twig": "^1.42.5",
+        "vlucas/phpdotenv": "^4.2.2"
     }
 }
