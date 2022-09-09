@@ -1,10 +1,9 @@
 .env
+.env.*
+!.env.example
 
-# SSL related files.
+# TLS certificate and private key.
 /etc/ssl
-
-/lib/3rdparty
-/src
 
 # Runtime and variable data files.
 /var/lock
@@ -18,6 +17,15 @@
 /www/img/posts
 /www/media
 
+# 3rdparty libraries.
+/lib/3rdparty
+
+# 3rdparty CSS files.
+/www/css/*.css
+
+# 3rdparty JavaScript files.
+/www/js/*.js
+
 # Auto-generated HTML files.
 /www/403.html
 /www/404.html
@@ -28,6 +36,4 @@
 /www/index.html
 
 # Google sitemap_gen output.
-/www/sitemap*.xml.gz
-/www/sitemap_index.xml
-
+/www/sitemap*xml*
