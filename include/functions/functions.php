@@ -28,10 +28,10 @@ function validateUrl($string)
         return false;
     }
 
-    if (!empty($url['port']) ||
-        !empty($url['user']) ||
-        !empty($url['pass']) ||
-        !in_array($url['scheme'], ['http', 'https'])
+    if (!empty($url['port'])
+        || !empty($url['user'])
+        || !empty($url['pass'])
+        || !in_array($url['scheme'], ['http', 'https'])
     ) {
         return false;
     }
@@ -41,24 +41,20 @@ function validateUrl($string)
 
 function validateRequest($req = [], $opt = [])
 {
-    /*
-     * Validate required fields.
-     */
+    // Validate required fields.
     foreach ($req as $k => &$v) {
         if (!isset($_POST[$k])) {
-            $error[$k] = 1;
+            $error[$k] = true;
         } else {
             $r[$k] = validateField($_POST[$k]);
             if ($r[$k] == '') {
-                $error[$k] = 1;
+                $error[$k] = true;
             }
         }
     }
     unset($k, $v);
 
-    /*
-     * Validate optional fields.
-     */
+    // Validate optional fields.
     foreach ($opt as $k => &$v) {
         if (isset($_POST[$k])) {
             $o[$k] = validateField($_POST[$k]);
@@ -111,7 +107,7 @@ function generateUri($string)
 
     $uri = trim($string, '-');
 
-    return ( !empty($uri) ? $uri : false );
+    return (!empty($uri) ? $uri : false);
 }
 
 require __DIR__ . '/cookies.php';
