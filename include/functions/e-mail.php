@@ -118,7 +118,7 @@ EOD;
     /**
      * Load template.
      */
-    $template = file_get_contents(APP_PATH . '/lib/views/emails/email-01.txt');
+    $template = file_get_contents(APP_PATH . '/lib/Views/emails/email-01.txt');
 
     $text = [
         '{APP_DOMAIN}' => $app['domain'],
@@ -133,7 +133,7 @@ EOD;
     $text = strip_tags(keys2values($text, $template));
 
     if ($email['format_html'] && $usr['email_html']) {
-        $template  = file_get_contents(APP_PATH . '/lib/views/emails/email-03.html');
+        $template  = file_get_contents(APP_PATH . '/lib/Views/emails/email-03.html');
 
         $html = [
             '{APP_DOMAIN}' => $app['domain'],
